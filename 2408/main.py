@@ -9,11 +9,16 @@ def saveOutput(result_dict, output_filename="output.txt"):
     # Количество пар вершин e, между которыми есть ориентированные ребра
     e = 0
 
+    # Для каждой стартовой вершины
     for start_point in result_dict.keys():
+        # Для каждой конечной вершины
         for end_point in result_dict[start_point].keys():
+            # Инкрементируем общее количество конечных вершин
             e += 1
+            # В результат добавляем строку в нужном формате
             resultFileContent += f"{start_point} {end_point} {result_dict[start_point][end_point]}\n"
 
+    # Записываем результат в необходимом формате в файл
     with open(output_filename, "w", encoding="UTF-8") as file:
         file.write(f"{v}\n{e}\n{resultFileContent}")
 
@@ -50,7 +55,7 @@ if __name__ == "__main__":
                         # Пытаемся инициализировать его
                         G[start_point][end_point] = 1
                     except KeyError:
-                        # Если же в start_point нет такой конечной вершиныы, создаем ее и инициализируем в ней счетчик
+                        # Если же в start_point нет такой конечной вершины, создаем ее и инициализируем в ней счетчик
                         G[start_point] = {}
                         G[start_point][end_point] = 1
 
