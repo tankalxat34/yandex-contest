@@ -1,0 +1,9 @@
+6
+7
+aaa aaa 10
+aaa aab 2
+aab abb 2
+abb bbb 2
+bbb bba 2
+bba baa 1
+baa aaa 1
