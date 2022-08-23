@@ -1,0 +1,4 @@
+2
+2
+aba bab 1
+bab aba 1
