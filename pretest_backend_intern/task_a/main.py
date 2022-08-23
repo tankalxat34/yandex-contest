@@ -32,10 +32,11 @@ class Vessels:
         if 1 <= n and n <= 100000:
             for e in self.vessels:
                 if not(1 <= e and e <= 10**9):
-                    return False
+                    self.saveResult(-1)
+                    quit()
             return True
         else:
-            return False
+            self.saveResult(-1)
 
 
 fromInput = True
@@ -53,6 +54,8 @@ if not (N and VESSELS):
 else:
     n = int(N)
     vessels = Vessels(VESSELS, True)
+
+vessels.checkToCorrectData()
 
 if n != len(vessels.get()):
     vessels.saveResult(-1)

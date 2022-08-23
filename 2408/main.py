@@ -1,4 +1,4 @@
-def saveOutput(result_dict, output_filename="output.txt"):
+def saveOutput(result_dict, output_filename="output.txt", userInput=False):
     """Сохраняет результат работы программы в файл"""
     # Строковая переменная, в которую запишем результат
     resultFileContent = str()
@@ -19,20 +19,33 @@ def saveOutput(result_dict, output_filename="output.txt"):
             resultFileContent += f"{start_point} {end_point} {result_dict[start_point][end_point]}\n"
 
     # Записываем результат в необходимом формате в файл
-    with open(output_filename, "w", encoding="UTF-8") as file:
-        file.write(f"{v}\n{e}\n{resultFileContent}"[:-1])
+    if userInput:
+        print(f"{v}\n{e}\n{resultFileContent}"[:-1])
+    else:
+        with open(output_filename, "w", encoding="UTF-8") as file:
+            file.write(f"{v}\n{e}\n{resultFileContent}"[:-1])
 
 
 # Программа работает только если она запускается на прямую, не импортируется
 if __name__ == "__main__":
+    userInput = True
     # Читаем файл построчно
-    with open("input.txt", "r", encoding="UTF-8") as file:
-        FILECONTENT = file.readlines()
+    T = input()
+    if not T:
+        userInput = False
+        with open("input.txt", "r", encoding="UTF-8") as file:
+            FILECONTENT = file.readlines()
 
-    # Создаем список строк. У каждой строки слева и справа обрезаем пробелы
-    COMBINATIONS = list(map(lambda e: e.strip(), FILECONTENT[1:]))
-    # Сохраняем количество переговорок
-    T = int(FILECONTENT[0])
+        # Создаем список строк. У каждой строки слева и справа обрезаем пробелы
+        COMBINATIONS = list(map(lambda e: e.strip(), FILECONTENT[1:]))
+        # Сохраняем количество переговорок
+        T = int(FILECONTENT[0])
+    else:
+        T = int(T)
+        COMBINATIONS = []
+        for i in range(T):
+            COMBINATIONS.append(input().strip())
+
 
     # Словарь для будущего графа
     G = {}
@@ -62,4 +75,4 @@ if __name__ == "__main__":
                                 G[start_point] = {}
                                 G[start_point][end_point] = 1
 
-    saveOutput(G)
+    saveOutput(G, "output.txt", userInput)

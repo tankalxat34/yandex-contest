@@ -1,8 +1,9 @@
 6
-6
-qwe wer 5
-wer ert 5
-ert rty 5
-rty tyq 4
-tyq yqw 4
-yqw qwe 4
+7
+aaa aaa 10
+aaa aab 2
+aab abb 2
+abb bbb 2
+bbb bba 2
+bba baa 1
+baa aaa 1
