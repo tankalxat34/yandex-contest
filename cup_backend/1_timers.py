@@ -12,14 +12,17 @@ with open("input.txt", "r", encoding="UTF-8") as file:
 all_times_to_call = TIMERS.copy()
 
 # получаем ближайшие звонки
-for iteration in range(1, N):
+for iteration in range(1, K):
     for timer in TIMERS:
         all_times_to_call.append(timer + X * iteration)
+
 # сортируем от меньшего к большему
 all_times_to_call.sort()
 
 # уничтожаем одинаковые звонки будильников
 all_times_to_call = list(set(all_times_to_call))
+
+print(all_times_to_call)
 
 with open("output.txt", "w", encoding="UTF-8") as file:
     file.write(str(all_times_to_call[K - 1]))
