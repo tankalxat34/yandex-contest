@@ -1,24 +1,26 @@
-with open(".\\input.txt", "r", encoding="utf-8") as file:
+
+with open("input.txt", "r", encoding="utf-8") as file:
     content = file.read().strip()
 
-
-pre_answer = ""
 answers = []
-end_answer = "-1"
 
-pre_symbols = ""
+for i in range(len(content)):
+    for j in range(len(content), 0, -1):
+        if content[i:j] == content[i:j][::-1] and len(content[i:j]) >= 2:
+            # print(content[i:j])
+            answers.append(content[i:j])
 
-dict_count_of_letters = dict()
-for symbol in content:
-    pre_answer += symbol
+answers = list(set(answers))
+answers.sort()
+
+# print(answers)
 
 
 
-    # try:
-    #     dict_count_of_letters[symbol] += 1
-    # except Exception:
-    #     dict_count_of_letters[symbol] = 1
-
-    
-
-print(answers)
+with open("output.txt", "w", encoding="utf-8") as file:
+    if not len(answers):
+        # print(-1)
+        file.write("-1")
+    else:
+        print(answers)
+        file.write(str(answers[0]))
